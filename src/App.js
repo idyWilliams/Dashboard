@@ -19,12 +19,14 @@ import {
   Financial,
   Bar,
   Editor,
-  Stacked
+  Stacked,
 } from "./pages";
 import "./App.css";
+import { useStateContext } from "./context/ContextProvider";
 
 function App() {
-  const activeMenu = false;
+  const { activeMenu, setActiveMenu } = useStateContext();
+
   return (
     <div>
       <BrowserRouter>
@@ -43,10 +45,12 @@ function App() {
           <div>
             {activeMenu ? (
               <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg: #fff">
-                <SideBar/>
+                <SideBar />
               </div>
             ) : (
-              <div className="dark:bg-secondary-dark-bg w-0">NO <SideBar/></div>
+              <div className="dark:bg-secondary-dark-bg w-0">
+               <SideBar />
+              </div>
             )}
           </div>
           <div
@@ -55,33 +59,34 @@ function App() {
             }`}
           >
             <div className="sticky md:static bg-main-bg dark:bg-main-dark-bg">
-              <NavBar/>
+              <NavBar />
             </div>
           </div>
           <Routes>
             {/* Dashboard */}
-            <Route exact path="/" element={<ECommerce/>} />
-            <Route exact path="/ecommerce" element={<ECommerce/>} />
+            <Route exact path="/" element={<ECommerce />} />
+            <Route exact path="/ecommerce" element={<ECommerce />} />
 
             {/* Pages */}
-            <Route exact path="/orders" element={<Orders/>} />
-            <Route exact path="/employees" element={<Employees/>} />
-            <Route exact path="/customers" element={<Customers/>} />
+            <Route exact path="/orders" element={<Orders />} />
+            <Route exact path="/employees" element={<Employees />} />
+            <Route exact path="/customers" element={<Customers />} />
 
             {/* Apps */}
-            <Route exact path="/kanban" element={<Kanban/>} />
-            <Route exact path="/editor" element={<Editor/>} />
-            <Route exact path="/calendar" element={<Calendar/>} />
-            <Route exact path="/color-picker" element={<ColorPicker/>} />
+            <Route exact path="/kanban" element={<Kanban />} />
+            <Route exact path="/editor" element={<Editor />} />
+            <Route exact path="/calendar" element={<Calendar />} />
+            <Route exact path="/color-picker" element={<ColorPicker />} />
 
             {/* Charts */}
-            <Route exact path="/line" element={<Line/>} />
-            <Route exact path="/area" element={<Area/>} />
-            <Route exact path="/bar" element={<Bar/>} />
-            <Route exact path="/financial" element={<Financial/>} />
-            <Route exact path="/color-mapping" element={"ColorMapping"} />
-            <Route exact path="/pyramid" element={<Pyramid/>} />
-            <Route exact path="/stacked" element={<Stacked/>} />
+            <Route exact path="/line" element={<Line />} />
+            <Route exact path="/area" element={<Area />} />
+            <Route exact path="/bar" element={<Bar />} />
+            <Route exact path="/financial" element={<Financial />} />
+            <Route exact path="/color-mapping" element={<ColorMapping/>} />
+            <Route exact path="/pyramid" element={<Pyramid />} />
+            <Route exact path="/stacked" element={<Stacked />} />
+            <Route exact path="/pie" element={<Pie />} />
           </Routes>
         </div>
       </BrowserRouter>

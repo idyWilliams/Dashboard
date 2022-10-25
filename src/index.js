@@ -3,8 +3,14 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import { ContextProvider } from "./context/ContextProvider";
+ReactDOM.render(
+  <ContextProvider>
+    <App />
+  </ContextProvider>,
 
-ReactDOM.render(<App />, document.getElementById("root"));
+  document.getElementById("root")
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
